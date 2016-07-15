@@ -10,8 +10,11 @@ defmodule Elapi.TodoController do
 
   def index(conn, _params) do
     user_id = conn.assigns.current_user.id
+    session = conn.assigns.mkh_sess
+    Logger.debug("UID: #{user_id} SID:#{session.id} SDATA:#{inspect session.data}")
     query = from t in Todo, where: t.owner_id == ^user_id
     todos = Repo.all(query)
+    Elapi.Sess.update(session, %{param1: "kuku"})
     render(conn, "index.json", todos: todos)
   end
 

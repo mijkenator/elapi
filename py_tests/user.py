@@ -71,8 +71,8 @@ def del_todo(token, tid):
     
 
 #create_user('mkh@mail.ru', '123456')
-#token = create_session('mkh@mail.ru', '123456')
-token = 'fiJf2f8n1AF6DjULOw1H2g'
+token = create_session('mkh@mail.ru', '123456')
+#token = 'fiJf2f8n1AF6DjULOw1H2g'
 print("TOKEN: %s" % token)
 get_todos(token)
 #get_todo(token, 3)

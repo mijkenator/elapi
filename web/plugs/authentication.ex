@@ -12,7 +12,7 @@ defmodule Elapi.Authentication do
         case token
             |> find_session_by_token()
             |> find_user_by_session() do
-              {:ok, user} -> assign(conn, :current_user, user)
+              {:ok, user, session} -> conn |> assign(:current_user, user) |> assign(:mkh_sess, session)
               _otherwise  ->
                 Log.debug "Elapi.Auth call otherwise error3"
                 auth_error!(conn)
@@ -27,7 +27,7 @@ defmodule Elapi.Authentication do
     Logger.debug "Elapi.Auth Call!"
     try do
         case find_user(conn) do
-          {:ok, user} -> assign(conn, :current_user, user)
+          {:ok, user, session} -> conn |> assign(:current_user, user) |> assign(:mkh_sess, session)
           _otherwise  ->
             Log.debug "Elapi.Auth call otherwise error"
             auth_error!(conn)
@@ -75,7 +75,7 @@ defmodule Elapi.Authentication do
   defp find_user_by_session(session) do
     case Repo.get(User, session.user_id) do
       nil  -> :error
-      user -> {:ok, user}
+      user -> {:ok, user, session}
     end
   end
 
