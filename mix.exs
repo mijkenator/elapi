@@ -41,6 +41,7 @@ defmodule Elapi.Mixfile do
      {:cors_plug, "~> 1.1"},
      {:comeonin, "~> 2.0"},
      {:secure_random, "~> 0.2"},
+     {:ex_admin, "~> 0.7"},
      {:cowboy, "~> 1.0"}]
   end
 

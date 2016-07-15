@@ -1,5 +1,6 @@
 defmodule Elapi.Router do
   use Elapi.Web, :router
+  use ExAdmin.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -26,5 +27,10 @@ defmodule Elapi.Router do
      resources "/todos", TodoController, except: [:new, :edit]
      resources "/users", UserController, only: [:create]
      resources "/sessions", SessionController, only: [:create]
+   end
+
+   scope "/admin", ExAdmin do
+     pipe_through :browser
+     admin_routes
    end
 end

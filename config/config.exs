@@ -27,3 +27,16 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :ex_admin,
+    repo: Elapi.Repo,
+    module: Elapi,
+    modules: [
+        Elapi.ExAdmin.Dashboard,
+        Elapi.ExAdmin.Users,
+        Elapi.ExAdmin.Todos,
+        Elapi.ExAdmin.Sessions
+    ]
+
+config :xain, :after_callback, {Phoenix.HTML, :raw}
+
