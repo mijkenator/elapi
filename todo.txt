@@ -1,0 +1,15 @@
+1.      auto reload
+2.      sessions into memcache
+3.      memcache  or another cache
+4.      release
+5.      do from scratch and docs
+    DONE 6.extend sessions with json data
+7.      postgreSQL
+    DONE 8.session with json data IP,Date casting
+9.      Plugs (plug RateLimit)
+10.     Clean up old sessions
+11.     Update session data
+12.     Auth with FB,G+,.....
+13.     Guardian
+14.     ExAdmin
+15.     put to Git
