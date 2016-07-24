@@ -17,12 +17,19 @@ def create_session(email, pwd):
 
     response = requests.post(url, data=json.dumps(payload), headers=headers)
     print(response.status_code)
+    print(response.headers)
     j = json.loads(response.text)
-    return j['data']['token']
+    return (j['data']['token'], response.headers["authorization"])
 
 def get_todos(token):
     url = base_url + "/api/todos"
     headers = {'authorization': 'Token token='+token}
+    response = requests.get(url, headers=headers)
+    print(response.content)
+
+def get_todos_jwt(token):
+    url = base_url + "/api/todos"
+    headers = {'authorization': token}
     response = requests.get(url, headers=headers)
     print(response.content)
         
@@ -71,10 +78,12 @@ def del_todo(token, tid):
     
 
 #create_user('mkh@mail.ru', '123456')
-token = create_session('mkh@mail.ru', '123456')
+(token, jwt) = create_session('mkh@mail.ru', '123456')
 #token = 'fiJf2f8n1AF6DjULOw1H2g'
 print("TOKEN: %s" % token)
-get_todos(token)
+print("JWT: %s" % jwt)
+get_todos_jwt(jwt)
+#get_todos(token)
 #get_todo(token, 3)
 #update_todo(token, 3, "llllll7676767676")
 #get_todo(token, 3)

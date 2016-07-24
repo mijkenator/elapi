@@ -40,3 +40,21 @@ config :ex_admin,
 
 config :xain, :after_callback, {Phoenix.HTML, :raw}
 
+config :guardian, Guardian,
+  #allowed_algos: ["HS512"], # optional
+  #verify_module: Guardian.JWT,  # optional
+  issuer: "Elapi.#{Mix.env}",
+  ttl: { 30, :days },
+  verify_issuer: true, # optional
+  secret_key: "lksdjowiurowieurlkjsdlwwer",
+  serializer: Elapi.GuardianSerializer,
+  permissions: %{
+    default: [
+      :read_profile,
+      :write_profile,
+      :read_token,
+      :revoke_token,
+    ],
+  }
+  
+

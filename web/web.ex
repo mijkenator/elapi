@@ -29,12 +29,16 @@ defmodule Elapi.Web do
   def controller do
     quote do
       use Phoenix.Controller
+      use Guardian.Phoenix.Controller
+      alias Guardian.Plug.EnsureAuthenticated
+      alias Guardian.Plug.EnsurePermissions
 
       alias Elapi.Repo
       import Ecto
       import Ecto.Query, only: [from: 1, from: 2]
 
       import Elapi.Router.Helpers
+      import Elapi.Controller.Helpers
       import Elapi.Gettext
     end
   end

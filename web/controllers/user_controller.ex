@@ -6,6 +6,7 @@ defmodule Elapi.UserController do
 
   plug :scrub_params, "user" when action in [:create]
 
+  def create(conn, up, _, _), do: create(conn, up)
   def create(conn, %{"user" => user_params}) do
     Logger.debug "Elapi.UCC00"
     changeset = User.registration_changeset(%User{}, user_params)

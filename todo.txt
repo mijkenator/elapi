@@ -11,5 +11,9 @@
     DONE 11.     Update session data
 12.     Auth with FB,G+,.....
 13.     Guardian
-14.     ExAdmin
-15.     put to Git
+    DONE 14.     ExAdmin
+    DONE 15.     put to Git
+16.     ExAdmin + Authorization
+17.     Guardian
+18.     Guardian permissions
+
