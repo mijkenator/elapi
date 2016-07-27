@@ -15,6 +15,10 @@ defmodule Elapi.Router do
     plug Guardian.Plug.LoadResource
   end
 
+  pipeline :br_lgn_required do
+    plug Guardian.Plug.EnsureAuthenticated, handler: Elapi.PageController
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -40,7 +44,7 @@ defmodule Elapi.Router do
    end
 
    scope "/admin", ExAdmin do
-     pipe_through [:browser, :browser_session]
+     pipe_through [:browser, :browser_session, :br_lgn_required]
      admin_routes
    end
 
