@@ -49,10 +49,12 @@ defmodule Elapi.Router do
    end
 
   scope "/auth", Elapi do
-    pipe_through [:browser, :browser_session] # Use the default browser stack
+    pipe_through [:browser] # Use the default browser stack
 
     get "/:identity", AuthController, :login
     get "/:identity/callback", AuthController, :callback
     post "/:identity/callback", AuthController, :callback
+
+    post "/login", AuthController, :ddologin
   end
 end
