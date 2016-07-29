@@ -7,7 +7,7 @@ defimpl ExAdmin.Authentication, for: Plug.Conn do
     def current_user_name(conn) do 
         case Guardian.Plug.current_resource(conn) do
             nil  -> nil
-            user -> user.name
+            user -> user.email
         end
     end
 

@@ -46,6 +46,8 @@ defmodule Elapi.SessionController do
     end
   end
 
-  def delete(_conn, _,_,_), do: :ok
+  def delete(conn, _,_,_)  do
+        Guardian.Plug.sign_out(conn)
+  end
 
 end

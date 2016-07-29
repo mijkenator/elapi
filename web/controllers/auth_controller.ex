@@ -11,6 +11,12 @@ defmodule Elapi.AuthController do
     render conn, "index.html"
   end
 
+  def login(conn, %{"identity" => "logout"}, _current_user, _claims) do
+    Logger.debug("\n AUTH LOGOUT")
+    Guardian.Plug.sign_out(conn)
+        |> put_flash(:info, "Logged out successfully")
+        |> render("index.html")
+  end
   def login(conn, _params, _current_user, _claims) do
     render conn, "index.html"
   end
@@ -49,6 +55,7 @@ defmodule Elapi.AuthController do
         |> put_status(:created)
         |> put_resp_header("authorization", "Bearer #{jwt}")
         |> put_resp_header("x-expires", to_string(exp))
+        #|> put_resp_cookie("_gjwt", jwt)
         |> render("callback.html", session: session)
 
       user ->
@@ -63,6 +70,13 @@ defmodule Elapi.AuthController do
         |> put_status(:unauthorized)
         |> render("index.html")
     end
+  end
+  
+  def ddologout(conn, _params, _cu, _cl) do
+    Logger.debug("\n AUTH LOGOUT")
+    Guardian.Plug.sign_out(conn)
+        |> put_flash(:info, "Logged out successfully")
+        |> render("index.html")
   end
 
 end

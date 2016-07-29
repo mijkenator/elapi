@@ -56,5 +56,7 @@ defmodule Elapi.Router do
     post "/:identity/callback", AuthController, :callback
 
     post "/login", AuthController, :ddologin
+    get "/logout", AuthController, :ddologout
+
   end
 end
