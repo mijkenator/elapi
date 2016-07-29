@@ -75,5 +75,18 @@ defmodule Elapi.TodoController do
     send_resp(conn, :no_content, "")
   end
 
+  def rs_se(conn, _,_,_) do
+    querystring = "select count(*) from users"
+    {:ok, result} = Ecto.Adapters.SQL.query(Repo, querystring , [])
+    Logger.debug "EAS ret: #{inspect result}"
+    acc = Map.get(result, :rows) |> List.first()
+    conn
+    |> render("any.json", resp: %{"type" => "rs_se", "status" => "ok", "acc" => acc})
+  end
+  def rs_sp(conn, _,_,_) do
+
+    send_resp(conn, :no_content, "")
+  end
+
 end
 

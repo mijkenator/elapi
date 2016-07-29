@@ -13,4 +13,6 @@ defmodule Elapi.TodoView do
     %{id: todo.id,
       description: todo.description}
   end
+  
+  def render("any.json", %{resp: resp}), do: resp
 end

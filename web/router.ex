@@ -41,6 +41,8 @@ defmodule Elapi.Router do
      resources "/todos", TodoController, except: [:new, :edit]
      resources "/users", UserController, only: [:create]
      resources "/sessions", SessionController, only: [:create, :delete]
+     get "rs_se", TodoController, :rs_se
+     get "rs_sp", TodoController, :rs_sp
    end
 
    scope "/admin", ExAdmin do

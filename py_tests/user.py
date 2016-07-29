@@ -56,8 +56,6 @@ def get_todo(token, tid):
     url = base_url + "/api/todos/" + str(tid)
     headers = {'authorization': 'Token token='+token}
     response = requests.get(url, headers=headers)
-
-    response = requests.get(url, headers=headers)
     print(response.text)
 
 def update_todo(token, tid, desc):
@@ -76,6 +74,11 @@ def del_todo(token, tid):
     response = requests.get(url, headers=headers)
     print(response.text)
     
+def test_rs_se(token):
+    url = base_url + "/api/rs_se"
+    headers = {'authorization': token}
+    response = requests.get(url, headers=headers)
+    print(response.content)
 
 #create_user('mkh@mail.ru', '123456')
 (token, jwt) = create_session('mkh@mail.ru', '123456')
@@ -83,6 +86,10 @@ def del_todo(token, tid):
 print("TOKEN: %s" % token)
 print("JWT: %s" % jwt)
 get_todos_jwt(jwt)
+
+print("RS_SE:")
+test_rs_se(jwt)
+
 #get_todos(token)
 #get_todo(token, 3)
 #update_todo(token, 3, "llllll7676767676")
