@@ -19,7 +19,10 @@ defmodule Elapi.Mixfile do
   def application do
     [mod: {Elapi, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :mariaex, :comeonin, :ueberauth_github]]
+                    :phoenix_ecto, :postgrex, :mariaex, :comeonin, :ueberauth_github,
+                    :phoenix_html, :cors_plug, :secure_random,
+                    :ex_admin, :guardian, :ueberauth, :ueberauth_identity,
+                    :ueberauth_github, :exrm]]
   end
 
   # Specifies which paths to compile per environment.
@@ -35,8 +38,8 @@ defmodule Elapi.Mixfile do
      {:mariaex, ">= 0.0.0"},
      {:phoenix_ecto, "~> 2.0"},
      {:phoenix_html, "~> 2.4"},
-     #{:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:phoenix_live_reload, "~> 1.0"},
+     {:phoenix_live_reload, "~> 1.0", only: :dev},
+     #{:phoenix_live_reload, "~> 1.0"},
      {:gettext, "~> 0.9"},
      {:cors_plug, "~> 1.1"},
      {:comeonin, "~> 2.0"},
