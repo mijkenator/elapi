@@ -46,6 +46,7 @@ defmodule Elapi.Mixfile do
      {:ueberauth, "~> 0.2.0"},
      {:ueberauth_identity, "~> 0.2.3"},
      {:ueberauth_github, "~> 0.2.0"},
+     {:exrm, "~> 0.15.3"},
      {:cowboy, "~> 1.0"}]
   end
 
