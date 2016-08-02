@@ -1,0 +1,24 @@
+1. build release 0.0.1
+MIX_ENV=prod mix phoenix.digest && MIX_ENV=prod mix release
+
+mkdir /opt/elapi_rels
+cp rel/elapi/elapi-0.0.1.tar.gz /opt/elapi_rels
+cd /opt/elapi_rels
+tar xvf elapi-0.0.1.tar.gz
+
+bin/elapi start
+
+2. build release 0.0.2
+cd /opt/elapi
+edit mix.exs to up version 0.0.1 -> 0.0.2
+
+
+MIX_ENV=prod mix phoenix.digest && MIX_ENV=prod mix release
+
+mkdir /opt/elapi_rels/releases/0.0.2
+cp rel/elapi/elapi-0.0.2.tar.gz /opt/elapi_rels/releases/0.0.2/elapi.tar.gz
+
+cd /opt/elapi_rels
+bin/elapi upgrade "0.0.2"
+bin/elapi downgrade "0.0.2"
+
