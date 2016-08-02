@@ -2,8 +2,12 @@ defmodule Elapi.Mixfile do
   use Mix.Project
 
   def project do
+    {result, _exit_code} = System.cmd("git", ["rev-parse", "HEAD"])
+    {rcount, _exit_code} = System.cmd("git", ["rev-list", "--all", "--count"])
+    rcount = String.strip(rcount)
+    result = String.strip(result)
     [app: :elapi,
-     version: "0.0.1",
+     version: "0.0.#{rcount}-#{result}",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
