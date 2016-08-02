@@ -15,9 +15,31 @@ config :elapi, Elapi.Endpoint,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
+#config :logger, :console,
+#  format: "$time $metadata[$level] $message\n",
+#  metadata: [:request_id]
+backends = [:console, {LoggerFileBackend, :debug}, {LoggerFileBackend, :error}]
+config :logger,
+  format: "[$date] [$time] [$level] $metadata $message\n",
+  metadata: [:request_id, :module, :line],
+  backends: backends
+
 config :logger, :console,
+  level: :debug,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
+
+config :logger, :debug,
+  path: "/home/vagrant/elapi/log/debug.log",
+  level: :debug,
+  format: "[$date] [$time] [$level] $metadata $message\n",
+  metadata: [:request_id, :date, :module, :line]
+
+config :logger, :error,
+  path: "/home/vagrant/elapi/log/error.log",
+  level: :error,
+  format: "[$date] [$time] [$level] $metadata $message\n",
+  metadata: [:request_id, :date, :module, :line]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

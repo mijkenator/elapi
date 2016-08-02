@@ -39,7 +39,6 @@ defmodule Elapi.Mixfile do
      {:phoenix_ecto, "~> 2.0"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
-     #{:phoenix_live_reload, "~> 1.0"},
      {:gettext, "~> 0.9"},
      {:cors_plug, "~> 1.1"},
      {:comeonin, "~> 2.0"},
@@ -50,6 +49,7 @@ defmodule Elapi.Mixfile do
      {:ueberauth_identity, "~> 0.2.3"},
      {:ueberauth_github, "~> 0.2.0"},
      {:exrm, "~> 0.15.3"},
+     {:logger_file_backend, ">= 0.0.0"},
      {:cowboy, "~> 1.0"}]
   end
 
