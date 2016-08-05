@@ -20,6 +20,9 @@ config :elapi, Elapi.Endpoint,
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
       ~r{web/views/.*(ex)$},
+      ~r{web/controllers/.*(ex)$},
+      ~r{web/utils/.*(ex)$},
+      ~r{web/models/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]
   ]
