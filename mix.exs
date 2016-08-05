@@ -26,7 +26,7 @@ defmodule Elapi.Mixfile do
                     :phoenix_ecto, :postgrex, :mariaex, :comeonin, :ueberauth_github,
                     :phoenix_html, :cors_plug, :secure_random,
                     :ex_admin, :guardian, :ueberauth, :ueberauth_identity,
-                    :ueberauth_github, :exrm]]
+                    :ueberauth_github, :exrm, :memcache_client]]
   end
 
   # Specifies which paths to compile per environment.
@@ -54,6 +54,7 @@ defmodule Elapi.Mixfile do
      {:ueberauth_github, "~> 0.2.0"},
      {:exrm, "~> 0.15.3"},
      {:logger_file_backend, ">= 0.0.0"},
+     {:memcache_client, "~> 1.0.0"},
      {:cowboy, "~> 1.0"}]
   end
 
