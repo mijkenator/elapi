@@ -1,1 +1,4 @@
-<h1>HOLA!</h1>
+<ul>
+    <li><a href="/admin"> DB Admin </a></li>
+    <li><a href="/channels">Channels demo</a></li>
+</ul>

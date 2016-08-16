@@ -32,6 +32,7 @@ defmodule Elapi.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/channels", ChannelsDemoController, :channels_demo
   end
 
   # Other scopes may use custom stacks.
