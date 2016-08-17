@@ -1,7 +1,8 @@
 defmodule Elapi.Endpoint do
   use Phoenix.Endpoint, otp_app: :elapi
 
-  socket "/socket", Elapi.UserSocket
+  socket "/socket",  Elapi.UserSocket
+  socket "/socket1", Elapi.UserSocket1
 
   # Serve at "/" the static files from "priv/static" directory.
   #
