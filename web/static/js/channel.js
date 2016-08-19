@@ -3,6 +3,8 @@ import {Socket, LongPoller} from "phoenix"
 class App {
 
   static init(){
+    console.log("Ap init")
+
     let socket = new Socket("/socket1", {
       logger: ((kind, msg, data) => { console.log(`${kind}: ${msg}`, data) })
     })

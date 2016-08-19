@@ -1,4 +1,6 @@
 <div class="jumbotron">
   <h2><%= gettext "Welcome to %{name}", name: "Phoenix channels demo!" %></h2>
-  <p class="lead"> lalala </p>
+  <p class="lead"> lalala 1111 </p>
 </div>
+
+
