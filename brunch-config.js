@@ -2,7 +2,18 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: "js/app.js"
+//      joinTo: "js/app.js"
+      joinTo:{ 
+       "js/app.js": [
+           "deps/phoenix_html/web/static/js/phoenix_html.js",
+            /^(web\/static\/js|node_modules|deps)/
+        ],
+       "js/channel.js": [
+           "deps/phoenix/web/static/js/phoenix.js",
+            /^(web\/static\/js\/channel|node_modules|deps)/,
+            "web/static/js/socket.js"
+        ]
+      }
 
       // To use a separate vendor.js bundle, specify two files path
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
@@ -39,6 +50,8 @@ exports.config = {
   paths: {
     // Dependencies and current project directories to watch
     watched: [
+      "deps/phoenix/web/static",
+      "deps/phoenix_html/web/static",
       "web/static",
       "test/static"
     ],

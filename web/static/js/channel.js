@@ -36,7 +36,9 @@ class App {
 
     chan.on("new:msg", msg => {
       $messages.append(this.messageTemplate(msg))
-      scrollTo(0, document.body.scrollHeight)
+      //scrollTo(0, document.body.scrollHeight)
+      var objDiv = document.getElementById("messages");
+      objDiv.scrollTop = objDiv.scrollHeight;
     })
 
     chan.on("user:entered", msg => {

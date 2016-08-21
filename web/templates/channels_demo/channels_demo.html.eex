@@ -1,4 +1,10 @@
-<div class="jumbotron">
+<div class="jumbotron1">
   <h2><%= gettext "Welcome to %{name}", name: "Phoenix channels demo!" %></h2>
-  <p class="lead"> lalala </p>
+</div>
+<div  style="border:1px solid black;width:696px;height:500px;overflow:scroll" id="messages">
+
+</div>
+<div  style="margin-top:10px;border:1px solid black;width:696px;height:120px" id="ch_msg_inp">
+<span style="width:150px">Username:</span> <input type="" id="username" style="border:1px dotted red;width:300px;height:30px"> <br>
+<span style="width:150px">Message:</span> <input type="" id="message-input" style="border:1px dotted red;width:300px;height:30px">
 </div>
