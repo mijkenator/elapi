@@ -1,3 +1,4 @@
+import "phoenix_html"
 import {Socket, LongPoller} from "phoenix"
 
 class App {
@@ -58,3 +59,5 @@ class App {
 $( () => App.init() )
 
 export default App
+
+

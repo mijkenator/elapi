@@ -36,5 +36,6 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/channel.js") %>"></script>
+    <script>require("web/static/js/channel")</script>
   </body>
 </html>
