@@ -20,7 +20,10 @@ class App {
     socket.onError( ev => console.log("ERROR", ev) )
     socket.onClose( e => console.log("CLOSE", e))
 
-    var chan = socket.channel("rooms:lobby", {})
+    var guardianToken = $('meta[name="guardian_token"]').attr('content');
+    console.log("GuardianToken:", guardianToken);
+
+    var chan = socket.channel("rooms:lobby", {token: guardianToken})
     chan.join().receive("ignore", () => console.log("auth error"))
                .receive("ok", () => console.log("join ok"))
     //           .after(10000, () => console.log("Connection interruption"))

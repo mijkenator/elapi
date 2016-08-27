@@ -87,8 +87,8 @@ print("TOKEN: %s" % token)
 print("JWT: %s" % jwt)
 get_todos_jwt(jwt)
 
-print("RS_SE:")
-test_rs_se(jwt)
+#print("RS_SE:")
+#test_rs_se(jwt)
 
 #get_todos(token)
 #get_todo(token, 3)
