@@ -57,7 +57,8 @@ config :ex_admin,
         Elapi.ExAdmin.Dashboard,
         Elapi.ExAdmin.Users,
         Elapi.ExAdmin.Todos,
-        Elapi.ExAdmin.Sessions
+        Elapi.ExAdmin.Sessions,
+        Elapi.ExAdmin.UserProperties
     ]
 
 config :xain, :after_callback, {Phoenix.HTML, :raw}

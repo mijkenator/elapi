@@ -45,7 +45,8 @@ defmodule Elapi.AuthController do
         }
         session_changeset = Session.create_changeset(%Session{}, %{user_id: user.id, data: sdata})
         {:ok, session} = Repo.insert(session_changeset)
-        new_conn = Guardian.Plug.sign_in(conn, user)
+        new_conn = Guardian.Plug.sign_in(conn, user, :token, perms: %{admin: [:dashboard]})
+        #new_conn = Guardian.Plug.sign_in(conn, user)
         jwt    = Guardian.Plug.current_token(new_conn)
         {:ok, claims} = Guardian.Plug.claims(new_conn)
         exp = Map.get(claims, "exp")
