@@ -13,5 +13,11 @@ defmodule Elapi.PageController do
     |> put_flash(:error, "Authentication required")
     |> redirect(to: auth_path(conn, :login, :identity))
   end
+  
+  def unauthorized(conn, _params) do
+    conn
+    |> put_flash(:error, "Not authorized. Permission problem.")
+    |> redirect(to: auth_path(conn, :login, :identity))
+  end
 
 end

@@ -77,6 +77,7 @@ config :guardian, Guardian,
       :read_token,
       :revoke_token,
     ],
+    admin: [:dashboard]
   }
   
 

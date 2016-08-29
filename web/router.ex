@@ -17,6 +17,7 @@ defmodule Elapi.Router do
 
   pipeline :br_lgn_required do
     plug Guardian.Plug.EnsureAuthenticated, handler: Elapi.PageController
+    plug Guardian.Plug.EnsurePermissions, handler: Elapi.PageController, admin: [:dashboard]
   end
 
   pipeline :api do
