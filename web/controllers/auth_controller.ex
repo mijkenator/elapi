@@ -6,6 +6,7 @@ defmodule Elapi.AuthController do
 
   alias Elapi.User
   alias Elapi.Session
+  alias Elapi.UserProperties
 
   def index(conn, _params, _current_user, _claims) do
     render conn, "index.html"
@@ -43,10 +44,19 @@ defmodule Elapi.AuthController do
             ip: Enum.join(Tuple.to_list(conn.remote_ip), "."),
             test: "lalalal"
         }
+        up = Repo.get_by(UserProperties, user_id: user.id)
+        Logger.debug("LOGIN #{user.id} #{inspect up}")
+
         session_changeset = Session.create_changeset(%Session{}, %{user_id: user.id, data: sdata})
         {:ok, session} = Repo.insert(session_changeset)
-        new_conn = Guardian.Plug.sign_in(conn, user, :token, perms: %{admin: [:dashboard]})
-        #new_conn = Guardian.Plug.sign_in(conn, user)
+        
+        new_conn = cond do
+            up && check_perm(up, "admin", "dashboard") ->
+                Guardian.Plug.sign_in(conn, user, :token, perms: %{admin: [:dashboard]})
+            up   -> Guardian.Plug.sign_in(conn, user)
+            true -> Guardian.Plug.sign_in(conn, user)
+        end
+
         jwt    = Guardian.Plug.current_token(new_conn)
         {:ok, claims} = Guardian.Plug.claims(new_conn)
         exp = Map.get(claims, "exp")
@@ -78,6 +88,16 @@ defmodule Elapi.AuthController do
     Guardian.Plug.sign_out(conn)
         |> put_flash(:info, "Logged out successfully")
         |> render("index.html")
+  end
+
+  def check_perm(nil, _, _), do: false
+  def check_perm(up, "admin", perm) do
+    case up.data do
+        %{"permissions" => %{"admin" => a_perm}} ->
+             Logger.debug("Permissions: #{inspect a_perm}")
+             Enum.member?(a_perm, perm)
+        _ -> false
+    end
   end
 
 end
