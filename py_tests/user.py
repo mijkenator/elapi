@@ -80,12 +80,12 @@ def test_rs_se(token):
     response = requests.get(url, headers=headers)
     print(response.content)
 
-#create_user('mkh@mail.ru', '123456')
-(token, jwt) = create_session('mkh@mail.ru', '123456')
+create_user('mkh2@mail.ru', '123456')
+#(token, jwt) = create_session('mkh@mail.ru', '123456')
 #token = 'fiJf2f8n1AF6DjULOw1H2g'
-print("TOKEN: %s" % token)
-print("JWT: %s" % jwt)
-get_todos_jwt(jwt)
+#print("TOKEN: %s" % token)
+#print("JWT: %s" % jwt)
+#get_todos_jwt(jwt)
 
 #print("RS_SE:")
 #test_rs_se(jwt)

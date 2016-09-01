@@ -14,6 +14,7 @@ defmodule Elapi.AuthController do
 
   def login(conn, %{"identity" => "logout"}, _current_user, _claims) do
     Logger.debug("\n AUTH LOGOUT")
+    Plug.CSRFProtection.delete_csrf_token()
     Guardian.Plug.sign_out(conn)
         |> put_flash(:info, "Logged out successfully")
         |> render("index.html")
@@ -53,8 +54,8 @@ defmodule Elapi.AuthController do
         new_conn = cond do
             up && check_perm(up, "admin", "dashboard") ->
                 Guardian.Plug.sign_in(conn, user, :token, perms: %{admin: [:dashboard]})
-            up   -> Guardian.Plug.sign_in(conn, user)
-            true -> Guardian.Plug.sign_in(conn, user)
+            up   -> Guardian.Plug.sign_in(conn, user, :token)
+            true -> Guardian.Plug.sign_in(conn, user, :token)
         end
 
         jwt    = Guardian.Plug.current_token(new_conn)
@@ -85,7 +86,9 @@ defmodule Elapi.AuthController do
   
   def ddologout(conn, _params, _cu, _cl) do
     Logger.debug("\n AUTH LOGOUT")
-    Guardian.Plug.sign_out(conn)
+    Plug.CSRFProtection.delete_csrf_token()
+    #Plug.CSRFProtection.get_csrf_token()
+    Guardian.Plug.sign_out(conn) 
         |> put_flash(:info, "Logged out successfully")
         |> render("index.html")
   end
