@@ -26,4 +26,11 @@ defmodule Elapi.UserController do
         |> render(Elapi.ChangesetView, "error.json", changeset: changeset)
     end
   end
+
+  def start_signup(conn, params, _, _), do: start_signup(conn, params)
+  def start_signup(conn, _params) do
+
+    render conn, "signup.html"
+  end
+
 end

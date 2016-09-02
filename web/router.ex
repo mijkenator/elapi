@@ -34,6 +34,7 @@ defmodule Elapi.Router do
 
     get "/", PageController, :index
     get "/channels", ChannelsDemoController, :channels_demo
+    get "/signup", UserController, :start_signup
   end
 
   # Other scopes may use custom stacks.

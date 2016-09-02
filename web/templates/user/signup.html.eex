@@ -1,0 +1,41 @@
+<script>
+console.log("test0")
+$( document ).ready(function() {
+    console.log("test1");
+    $("#mkh_send_signup_request").click( function(e){ send_signup_request(e); } );
+});
+
+function send_signup_request(e){
+    console.log("send signup request");
+    var formData = {
+        user: {email:$("#mkh_email").val(), password:$("#mkh_pwd").val()}
+    };
+    $.ajax({
+      url: "/api/users",
+      type: "POST",
+      data: JSON.stringify(formData),
+      contentType : 'application/json',
+      success: function(data) { alert('data: ' + data); }
+    });
+}
+
+</script>
+
+<h1>Register</h1>
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-6"><input id="mkh_email" class="form-control" placeholder="yourname@email.com" name="username" type="email" required="required"></div>
+  </div>
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-6"><input id="mkh_pwd" name="password" class="form-control" type="password" required="required"></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <input type="button" class="btn btn-warning" id="mkh_send_signup_request" value="SignUp">
+      <input type="hidden" name="_csrf_token" value="<%= get_csrf_token() %>">
+    </div>
+  </div>
+</form>
+
