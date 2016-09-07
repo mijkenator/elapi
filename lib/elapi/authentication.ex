@@ -16,8 +16,8 @@ defimpl ExAdmin.Authentication, for: Plug.Conn do
 end
 
 
-defmodule Elapi.Authentication do
-  def current_user(conn) do
-    Guardian.Plug.current_resource(conn)
-  end
-end
+#defmodule Elapi.Authentication do
+#  def current_user(conn) do
+#    Guardian.Plug.current_resource(conn)
+#  end
+#end

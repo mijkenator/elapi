@@ -55,6 +55,7 @@ defmodule Elapi.Mixfile do
      {:exrm, "~> 0.15.3"},
      {:logger_file_backend, ">= 0.0.0"},
      {:memcache_client, "~> 1.0.0"},
+     {:poison, "~> 2.1.0", override: true},
      {:cowboy, "~> 1.0"}]
   end
 
