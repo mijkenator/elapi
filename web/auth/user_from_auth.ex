@@ -96,9 +96,8 @@ defmodule Elapi.UserFromAuth do
   end
 
   defp create_user_from_auth(auth, current_user, repo) do
-    user = current_user
-    if !user, do: user = repo.get_by(User, email: auth.info.email)
-    if !user, do: user = create_user(auth, repo)
+    u = if !current_user do repo.get_by(User, email: auth.info.email) else current_user end
+    user = if !u do create_user(auth, repo) else u end
     authorization_from_auth(user, auth, repo)
     {:ok, user}
   end
