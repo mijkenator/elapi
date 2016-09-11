@@ -23,3 +23,16 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
 https://github.com/mwoods79/todo_api
 https://blog.codeship.com/ridiculously-fast-api-authentication-åwith-phoenix/
 https://blog.codeship.com/refactoring-faster-can-spell-phoenix/
+
+## Clone project on new machine
+git clone .....
+cd ...
+mix
+mix deps.get
+mix compile
+
+mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez
+
+npm install && node node_modules/brunch/bin/brunch build
+mix admin.install
+iex -S mix phoenix.server
